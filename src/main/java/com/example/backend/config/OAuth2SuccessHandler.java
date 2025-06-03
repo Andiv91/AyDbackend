@@ -17,7 +17,10 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
                                         Authentication authentication) throws IOException, ServletException {
         
         // Redirigir al frontend después de un login exitoso con OAuth2
-        System.out.println("Autenticación OAuth2 exitosa. Redirigiendo al frontend...");
-        response.sendRedirect("http://localhost:3000/");
+        String frontendUrl = System.getenv("FRONTEND_URL");
+        if (frontendUrl == null || frontendUrl.isEmpty()) {
+            frontendUrl = "http://localhost:3000";
+        }
+        response.sendRedirect(frontendUrl + "/");
     }
 } 

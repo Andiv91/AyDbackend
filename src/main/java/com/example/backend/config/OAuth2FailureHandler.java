@@ -36,6 +36,10 @@ public class OAuth2FailureHandler implements AuthenticationFailureHandler {
         System.out.println("Autenticación OAuth2 fallida: " + errorMessage);
         
         // Redirigir al frontend con el mensaje de error
-        response.sendRedirect("http://localhost:3000/login?error=" + encodedMessage);
+        String frontendUrl = System.getenv("FRONTEND_URL");
+        if (frontendUrl == null || frontendUrl.isEmpty()) {
+            frontendUrl = "http://localhost:3000";
+        }
+        response.sendRedirect(frontendUrl + "/login?error=" + encodedMessage);
     }
 } 

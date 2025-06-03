@@ -17,8 +17,9 @@ public class CorsConfig {
         // Permitir credenciales
         config.setAllowCredentials(true);
         
-        // Permitir solicitudes desde el frontend
+        // Permitir solicitudes desde el frontend local y el desplegado
         config.addAllowedOrigin("http://localhost:3000");
+        config.addAllowedOrigin("https://app106.proyectos.fireploy.online");
         
         // Permitir todos los headers
         config.addAllowedHeader("*");
