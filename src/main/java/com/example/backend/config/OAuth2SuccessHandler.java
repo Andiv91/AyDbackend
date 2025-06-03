@@ -19,7 +19,7 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
         // Redirigir al frontend después de un login exitoso con OAuth2
         String frontendUrl = System.getenv("FRONTEND_URL");
         if (frontendUrl == null || frontendUrl.isEmpty()) {
-            frontendUrl = "http://localhost:3000";
+            frontendUrl = "https://app106.proyectos.fireploy.online";
         }
         response.sendRedirect(frontendUrl + "/");
     }

@@ -38,7 +38,7 @@ public class OAuth2FailureHandler implements AuthenticationFailureHandler {
         // Redirigir al frontend con el mensaje de error
         String frontendUrl = System.getenv("FRONTEND_URL");
         if (frontendUrl == null || frontendUrl.isEmpty()) {
-            frontendUrl = "http://localhost:3000";
+            frontendUrl = "https://app106.proyectos.fireploy.online";
         }
         response.sendRedirect(frontendUrl + "/login?error=" + encodedMessage);
     }
