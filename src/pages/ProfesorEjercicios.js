@@ -9,11 +9,11 @@ export default function ProfesorEjercicios() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/profesores/${profesorId}`, { credentials: 'include' })
+    fetch(`${API_URL}/api/profesores/${profesorId}`, { credentials: 'include' })
       .then(res => res.json())
       .then(data => setProfesor(data));
 
-    fetch(`http://localhost:8080/api/activities/teacher/${profesorId}`, { credentials: 'include' })
+    fetch(`${API_URL}/api/activities/teacher/${profesorId}`, { credentials: 'include' })
       .then(res => res.json())
       .then(data => setEjercicios(data));
   }, [profesorId]);

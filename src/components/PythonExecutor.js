@@ -15,7 +15,7 @@ export default function PythonExecutor({ expectedOutput = "Hello, World!", activ
     if (!activityId) return;
     console.log('Guardando submission para actividad', activityId, 'con output:', outputToSave);
     try {
-      await fetch(`http://localhost:8080/api/submissions/${activityId}`, {
+      await fetch(`${API_URL}/api/submissions/${activityId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -33,7 +33,7 @@ export default function PythonExecutor({ expectedOutput = "Hello, World!", activ
     setSuccess(false);
     setOutput('');
     try {
-      const response = await fetch('http://localhost:8080/api/python/execute', {
+      const response = await fetch(`${API_URL}/api/python/execute', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',

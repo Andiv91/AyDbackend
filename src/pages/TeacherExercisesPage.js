@@ -12,7 +12,7 @@ export default function TeacherExercisesPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/activities', { credentials: 'include' })
+    fetch(`${API_URL}/api/activities', { credentials: 'include' })
       .then(res => res.json())
       .then(data => setExercises(data.filter(e => e.teacher)))
       .finally(() => setLoading(false));
@@ -29,7 +29,7 @@ export default function TeacherExercisesPage() {
   };
 
   const confirmDelete = () => {
-    fetch(`http://localhost:8080/api/activities/${deleteId}`, {
+    fetch(`${API_URL}/api/activities/${deleteId}`, {
       method: 'DELETE',
       credentials: 'include',
     })

@@ -7,7 +7,7 @@ export default function ProfesoresList() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/profesores', { credentials: 'include' })
+    fetch(`${API_URL}/api/profesores', { credentials: 'include' })
       .then(res => res.json())
       .then(data => setProfesores(data));
   }, []);

@@ -8,7 +8,7 @@ export default function FavoritesPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/favorites/student/me', { credentials: 'include' })
+    fetch(`${API_URL}/api/favorites/student/me', { credentials: 'include' })
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {

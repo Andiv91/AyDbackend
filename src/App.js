@@ -40,7 +40,7 @@ function ProtectedRoute({ children }) {
 
   useEffect(() => {
     // Verificar si el usuario está autenticado
-    fetch('http://localhost:8080/api/user/me', {
+    fetch(`${API_URL}/api/user/me', {
       credentials: 'include'
     })
       .then(response => {
@@ -80,7 +80,7 @@ function App() {
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    fetch('http://localhost:8080/api/user/me', { credentials: 'include' })
+    fetch(`${API_URL}/api/user/me', { credentials: 'include' })
       .then(res => res.ok ? res.json() : null)
       .then(data => { setCurrentUser(data); setLoading(false); })
       .catch(() => setLoading(false));

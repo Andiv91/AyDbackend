@@ -48,7 +48,7 @@ function RegisterPage() {
     try {
       console.log('Enviando datos de registro:', { email, password, name, role });
       
-      const response = await fetch('http://localhost:8080/api/auth/register', {
+      const response = await fetch(`${API_URL}/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password, name, role }),
@@ -83,7 +83,7 @@ function RegisterPage() {
   const handleGoogleRegister = async () => {
     try {
       // Primero establecemos el rol para la sesión
-      const roleResponse = await fetch(`http://localhost:8080/api/auth/set-role?role=${role}`, {
+      const roleResponse = await fetch(`${API_URL}/api/auth/set-role?role=${role}`, {
         method: 'POST',
         credentials: 'include'
       });
@@ -91,7 +91,7 @@ function RegisterPage() {
       console.log('Respuesta de set-role:', roleResponse);
       
       // Luego redirigimos a la URL de autenticación de Google
-      window.location.href = 'http://localhost:8080/oauth2/authorization/google';
+      window.location.href = `${API_URL}/oauth2/authorization/google';
     } catch (err) {
       console.error('Error al intentar registrarse con Google:', err);
       setError('Error al intentar registrarse con Google');
@@ -99,12 +99,12 @@ function RegisterPage() {
   };
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/user/me', { credentials: 'include' })
+    fetch(`${API_URL}/api/user/me', { credentials: 'include' })
       .then(res => res.json())
       .then(user => {
         setCurrentUser(user);
         // Ahora sí, filtra los ejercicios por el profesor actual
-        fetch('http://localhost:8080/api/activities', { credentials: 'include' })
+        fetch(`${API_URL}/api/activities', { credentials: 'include' })
           .then(res => res.json())
           .then(data => setActivities(data.filter(a => a.teacher && a.teacher.id === user.id)));
       });

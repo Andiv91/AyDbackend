@@ -9,7 +9,7 @@ export default function ViewStudents() {
 
   useEffect(() => {
     // Obtener los ejercicios del profesor
-    fetch('http://localhost:8080/api/activities', { credentials: 'include' })
+    fetch(`${API_URL}/api/activities', { credentials: 'include' })
       .then(res => res.json())
       .then(data => setActivities(data.filter(a => a.teacher)));
   }, []);
@@ -17,7 +17,7 @@ export default function ViewStudents() {
   useEffect(() => {
     if (!selectedActivity) return;
     setLoading(true);
-    fetch(`http://localhost:8080/api/submissions/activity/${selectedActivity}`, { credentials: 'include' })
+    fetch(`${API_URL}/api/submissions/activity/${selectedActivity}`, { credentials: 'include' })
       .then(res => res.json())
       .then(data => setSubmissions(data))
       .finally(() => setLoading(false));

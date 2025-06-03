@@ -23,7 +23,7 @@ export default function Layout({ children }) {
   useEffect(() => {
     const fetchCurrentUser = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/user/me', {
+        const response = await fetch(`${API_URL}/api/user/me', {
           credentials: 'include'
         });
         

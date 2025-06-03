@@ -12,7 +12,7 @@ export default function ExerciseAttempt() {
   const [justAdded, setJustAdded] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/activities', { credentials: 'include' })
+    fetch(`${API_URL}/api/activities', { credentials: 'include' })
       .then(res => res.json())
       .then(activities => {
         const found = activities.find(a => a.id === Number(activityId));
@@ -22,7 +22,7 @@ export default function ExerciseAttempt() {
   }, [activityId]);
 
   const fetchFavoriteStatus = () => {
-    fetch(`http://localhost:8080/api/favorites/activity/${activityId}`, { credentials: 'include' })
+    fetch(`${API_URL}/api/favorites/activity/${activityId}`, { credentials: 'include' })
       .then(res => res.ok ? res.json() : null)
       .then(data => {
         // Si el backend devuelve un objeto favorito, null o false
@@ -38,7 +38,7 @@ export default function ExerciseAttempt() {
     setFavoriteLoading(true);
     setIsFavorite(true); // Actualiza localmente de inmediato
     setJustAdded(true);
-    await fetch(`http://localhost:8080/api/favorites/${activityId}`, {
+    await fetch(`${API_URL}/api/favorites/${activityId}`, {
       method: 'POST',
       credentials: 'include',
     });
@@ -50,7 +50,7 @@ export default function ExerciseAttempt() {
   const handleRemoveFavorite = async () => {
     setFavoriteLoading(true);
     setIsFavorite(false); // Actualiza localmente de inmediato
-    await fetch(`http://localhost:8080/api/favorites/${activityId}`, {
+    await fetch(`${API_URL}/api/favorites/${activityId}`, {
       method: 'DELETE',
       credentials: 'include',
     });
